@@ -1,9 +1,5 @@
 name: 'Build Package Action'
-description: ''
-
-defaults:
-  run:
-    shell: bash
+description: 'Build package'
 
 inputs:
   package:
@@ -17,4 +13,6 @@ runs:
   using: 'composite'
   steps:
     - run: cd packages/${{ inputs.package }}
+      shell: bash
     - run: docker build
+      shell: bash
