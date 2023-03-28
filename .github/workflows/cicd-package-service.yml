@@ -8,23 +8,9 @@ on:
 
   workflow_dispatch:
 
-env:
-  PACKAGE: service
-
 jobs:
-  Build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/actions/build-package
-        with: 
-          package: ${{ env.PACKAGE }}
-  Test:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Tests OK" >> $GITHUB_STEP_SUMMARY
-  Deploy:
-    runs-on: ubuntu-latest
-    needs: [ Build, Test ]
-    steps:
-      - run: echo "Deployed" >> $GITHUB_STEP_SUMMARY
+  Package:
+    uses: ./.github/workflows/cicd_build-test-deploy.yml
+    with:
+      package: service
+    
