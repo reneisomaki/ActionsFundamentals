@@ -1,0 +1,20 @@
+name: 'Build Package Action'
+description: ''
+
+defaults:
+  run:
+    shell: bash
+
+inputs:
+  package:
+    description: 'Package name'
+    required: true
+    default: ''
+
+outputs:
+
+runs:
+  using: 'composite'
+  steps:
+    - run: cd packages/${{ inputs.package }}
+    - run: docker build

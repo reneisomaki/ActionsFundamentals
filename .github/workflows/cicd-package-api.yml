@@ -1,0 +1,24 @@
+name: CICD Package API
+
+on:
+  push:
+    branches: [ main ]
+    paths: ./packages/api/**
+  workflow_dispatch:
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/build-package
+        with: 
+          package: api
+  Test:
+    runs-on: ubuntu-lates
+    steps:
+      - run: echo "Tests OK" >> $GITHUB_STEP_SUMMARY
+  Deploy:
+    needs: [ Build, Test ]
+    steps:
+      - run: echo "Deployed" >> $GITHUB_STEP_SUMMARY
