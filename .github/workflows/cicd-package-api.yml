@@ -12,7 +12,7 @@ env:
   PACKAGE: api
     
 jobs:
-  Build-Test-Deploy:
+  Package:
     uses: ./.github/workflows/cicd_build-test-deploy.yml
     with:
       package: api
