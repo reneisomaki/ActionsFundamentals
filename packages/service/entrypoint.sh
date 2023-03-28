@@ -1,3 +1,3 @@
 #!/bin/sh -l
 
-echo "service package $1"
+echo "service package updated $1"
