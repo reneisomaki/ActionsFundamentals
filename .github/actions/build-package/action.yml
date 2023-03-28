@@ -12,5 +12,5 @@ runs:
   steps:
     - run: |
         cd packages/${{ inputs.package }}
-        docker build .
+        docker build . >> $GITHUB_STEP_SUMMARY
       shell: bash
