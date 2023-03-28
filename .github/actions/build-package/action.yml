@@ -10,8 +10,8 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: |
-        echo "Building Docker image for ${{ inputs.package }}"
+    - name: Building Docker image for ${{ inputs.package }}
+      run: |
         cd packages/${{ inputs.package }}
         docker build .
       shell: bash
