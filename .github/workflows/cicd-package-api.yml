@@ -15,7 +15,7 @@ jobs:
   Build-Test-Deploy:
     uses: ./.github/workflows/cicd_build-test-deploy.yml
     with:
-      package: ${{ env.PACKAGE }}
+      package: '${{ env.PACKAGE }}'
 
   # Build:
   #   runs-on: ubuntu-latest
