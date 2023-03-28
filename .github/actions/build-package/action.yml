@@ -11,6 +11,7 @@ runs:
   using: 'composite'
   steps:
     - run: |
+        echo "Building Docker image for ${{ inputs.package }}"
         cd packages/${{ inputs.package }}
-        docker build . >> $GITHUB_STEP_SUMMARY
+        docker build .
       shell: bash
