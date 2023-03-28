@@ -10,7 +10,7 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: cd packages/${{ inputs.package }}
-      shell: bash
-    - run: docker build .
+    - run: |
+        cd packages/${{ inputs.package }}
+        docker build .
       shell: bash
