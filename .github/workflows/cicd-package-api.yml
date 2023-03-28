@@ -7,9 +7,6 @@ on:
       - 'packages/api/**'
       - 'packages/shared/**'
   workflow_dispatch:
-
-env:
-  PACKAGE: api
     
 jobs:
   Package:

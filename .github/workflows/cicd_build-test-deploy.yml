@@ -1,27 +1,27 @@
 name: Build, test and deploy package
 
 on:
-    workflow_call:
-        inputs:
-            package:
-                description: 'Package name to be build, test and deployed.'
-                type: string
-                required: true
+  workflow_call:
+    inputs:
+      package:
+        description: 'Package name to be build, test and deployed.'
+        type: string
+        required: true
 
 jobs:
-    Build:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v3
-          - uses: ./.github/actions/build-package
-            with: 
-              package: ${{ inputs.package }}
-    Test:
-        runs-on: ubuntu-latest
-        steps:
-          - run: echo "Tests OK" >> $GITHUB_STEP_SUMMARY
-    Deploy:
-        runs-on: ubuntu-latest
-        needs: [ Build, Test ]
-        steps:
-          - run: echo "Deployed" >> $GITHUB_STEP_SUMMARY
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/build-package
+        with: 
+          package: ${{ inputs.package }}
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Tests OK" >> $GITHUB_STEP_SUMMARY
+  Deploy:
+    runs-on: ubuntu-latest
+    needs: [ Build, Test ]
+    steps:
+      - run: echo "Deployed" >> $GITHUB_STEP_SUMMARY
