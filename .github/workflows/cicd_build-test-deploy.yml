@@ -23,18 +23,17 @@ jobs:
         id: version
         run: |
           cd packages/${{ inputs.package }}
-          version=$(jq -r '.version' ./package.json)
-          echo "version is $version"
-          echo "version=$version" >> $GITHUB_OUTPUT
+          declare version=$(jq -r '.version' ./package.json)
+          echo "version=$version" | tee $GITHUB_OUTPUT
       - run: env
       - name: Building Docker image for ${{ inputs.package }}
         id: docker
         run: |
-          imagePath="$RUNNER_TEMP/image.tar"
+          declare imagePath="$RUNNER_TEMP/image.tar"
           echo "imagePath=$imagePath" | tee $GITHUB_OUTPUT
           cd packages/${{ inputs.package }}
           docker build -o "type=tar,dest=$imagePath" .
-          echo "Files in temporary directory $RUNNER_TEMP"
+          echo "Files in $RUNNER_TEMP:"
           ls "$RUNNER_TEMP"
       - uses: actions/upload-artifact@v3
         with: 
