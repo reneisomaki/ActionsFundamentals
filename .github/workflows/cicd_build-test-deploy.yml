@@ -12,7 +12,7 @@ jobs:
   Lint:
     runs-on: ubunty-latest
     steps:
-      - run: echo "Deployed" >> $GITHUB_STEP_SUMMARY
+      - run: echo "Linted" >> $GITHUB_STEP_SUMMARY
 
   Build:
     runs-on: ubuntu-latest
