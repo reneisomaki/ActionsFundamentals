@@ -38,7 +38,7 @@ jobs:
           ls "$RUNNER_TEMP"
       - uses: actions/upload-artifact@v3
         with: 
-          name: ${{ inputs.package }}-${{ steps.version.outputs.version }}
+          name: docker-${{ inputs.package }}-${{ steps.version.outputs.version }}.tar
           path: ${{ steps.docker.outputs.imagePath }}
 
   Test:
@@ -50,11 +50,11 @@ jobs:
         id: version
         run: |
           cd packages/${{ inputs.package }}
-          version=$(jq -r '.version' ./package.json)
-          echo "version=$version" >> $GITHUB_OUTPUT
+          declare version=$(jq -r '.version' ./package.json)
+          echo "version=$version" | tee $GITHUB_OUTPUT
       - uses: actions/download-artifact@v3
         with: 
-          name: ${{ inputs.package }}-${{ steps.version.outputs.version }}
+          name: docker-${{ inputs.package }}-${{ steps.version.outputs.version }}.tar
           path: /tmp/image.tar
       - run: echo "Tests OK" >> $GITHUB_STEP_SUMMARY
 
