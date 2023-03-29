@@ -31,7 +31,7 @@ jobs:
         id: docker
         run: |
           imagePath="$RUNNER_TEMP/image.tar"
-          echo "imagePath=$imagePath" >> $GITHUB_OUTPUT
+          echo "imagePath=$imagePath" | tee $GITHUB_OUTPUT
           cd packages/${{ inputs.package }}
           docker build -o "type=tar,dest=$imagePath" .
           echo "Files in temporary directory $RUNNER_TEMP"
