@@ -29,10 +29,11 @@ jobs:
       - run: env
       - name: Building Docker image for ${{ inputs.package }}
         run: |
+          echo $RUNNER_TEMP
           cd packages/${{ inputs.package }}
-          docker build --output type=tar,dest=$RUNNER_TEMP/image.tar .
-          echo 'Files in temporary directory $RUNNER_TEMP:'
-          ls $$RUNNER_TEMP
+          docker build --output "type=tar,dest=$RUNNER_TEMP/image.tar" .
+          echo "Files in temporary directory $RUNNER_TEMP"
+          ls "$RUNNER_TEMP"
         shell: bash
       - uses: actions/upload-artifact@v3
         with: 
