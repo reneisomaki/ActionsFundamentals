@@ -38,7 +38,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with: 
           name: ${{ inputs.package }}-${{ steps.version.outputs.version }}
-          path: ${{ stepa.docker.outputs.imagePath }}
+          path: ${{ steps.docker.outputs.imagePath }}
 
   Test:
     runs-on: ubuntu-latest
