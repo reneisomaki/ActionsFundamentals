@@ -25,11 +25,11 @@ jobs:
           version=$(jq -r '.version' ./package.json)
           echo "version is $version"
           echo "version=$version" >> $GITHUB_OUTPUT
-        shell: bash
       - run: env
       - name: Building Docker image for ${{ inputs.package }}
         run: |
           echo $RUNNER_TEMP
+          echo ${{ env.RUNNER_TEMP }}
           cd packages/${{ inputs.package }}
           docker build --output "type=tar,dest=$RUNNER_TEMP/image.tar" .
           echo "Files in temporary directory $RUNNER_TEMP"
