@@ -26,6 +26,7 @@ jobs:
           echo "version is $version"
           echo "version=$version" >> $GITHUB_OUTPUT
         shell: bash
+      - run: env
       - name: Building Docker image for ${{ inputs.package }}
         run: |
           cd packages/${{ inputs.package }}
