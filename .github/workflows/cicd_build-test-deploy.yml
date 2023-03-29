@@ -33,7 +33,7 @@ jobs:
           imagePath="$RUNNER_TEMP/image.tar"
           echo "imagePath=$imagePath" >> $GITHUB_OUTPUT
           cd packages/${{ inputs.package }}
-          docker build --output "type=tar,dest=$imagePath" .
+          docker build -o - . > "$imagePath"
           echo "Files in temporary directory $RUNNER_TEMP"
           ls "$RUNNER_TEMP"
       - uses: actions/upload-artifact@v3
