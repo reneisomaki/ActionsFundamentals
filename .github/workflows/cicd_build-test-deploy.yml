@@ -23,13 +23,15 @@ jobs:
         run: |
           cd packages/${{ inputs.package }}
           version=$(jq -r '.version' ./package.json)
+          echo "version is $version"
           echo "version=$version" >> $GITHUB_OUTPUT
         shell: bash
       - name: Building Docker image for ${{ inputs.package }}
         run: |
           cd packages/${{ inputs.package }}
           docker build --output type=tar,dest=/tmp/image.tar .
-          ls
+          echo 'files:'
+          ls /tmp
         shell: bash
       - uses: actions/upload-artifact@v3
         with: 
