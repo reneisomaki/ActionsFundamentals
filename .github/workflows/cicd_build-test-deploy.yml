@@ -33,7 +33,7 @@ jobs:
           echo "imagePath=$imagePath" | tee $GITHUB_OUTPUT
           cd packages/${{ inputs.package }}
           docker build --tag ${{ inputs.package }} .
-          docker export ${{ inputs.package }} > $imagePath
+          docker save ${{ inputs.package }} > $imagePath
           echo "Files in $RUNNER_TEMP:"
           ls "$RUNNER_TEMP"
       - uses: actions/upload-artifact@v3
