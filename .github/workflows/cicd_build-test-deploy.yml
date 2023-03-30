@@ -55,7 +55,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with: 
           name: docker-${{ inputs.package }}-${{ steps.version.outputs.version }}.tar
-          path: ${{ env.RUNNER_TEMP }}
+          path: "${{ env.RUNNER_TEMP }}/image.tar"
       - run: |
           ls "$RUNNER_TEMP"
       - run: echo "Tests OK" >> $GITHUB_STEP_SUMMARY
