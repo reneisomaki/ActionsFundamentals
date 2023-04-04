@@ -10,6 +10,6 @@ on:
     
 jobs:
   Package:
-    uses: ./.github/workflows/shared/build-test-deploy.yml
+    uses: ./.github/workflows/shared-build-test-deploy.yml
     with:
       package: api
