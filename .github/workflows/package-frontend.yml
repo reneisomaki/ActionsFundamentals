@@ -1,4 +1,4 @@
-name: CICD Package Frontend
+name: CI/CD Package Frontend
 
 on:
   push:

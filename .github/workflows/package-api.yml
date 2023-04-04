@@ -1,4 +1,4 @@
-name: CICD Package API
+name: CI/CD Package API
 
 on:
   push:

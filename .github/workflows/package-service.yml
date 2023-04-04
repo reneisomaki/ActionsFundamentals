@@ -1,4 +1,4 @@
-name: CICD Package Service
+name: CI/CD Package Service
 
 on:
   push:
