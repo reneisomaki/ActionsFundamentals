@@ -10,7 +10,7 @@ on:
 
 jobs:
   Package:
-    uses: ./.github/workflows/cicd_build-test-deploy.yml
+    uses: ./.github/workflows/shared/build-test-deploy.yml
     with:
       package: service
     
