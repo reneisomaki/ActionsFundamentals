@@ -1,4 +1,4 @@
-name: Build, test and deploy package
+name: Shared / CI/CD a package
 
 on:
   workflow_call:
